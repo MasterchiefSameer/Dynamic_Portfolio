@@ -13,6 +13,7 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main className="bg-black min-h-screen text-white relative">
+      <Analytics/>
       <Navbar />
       <HeroSection />
       {/* <ExperienceSection /> */}
