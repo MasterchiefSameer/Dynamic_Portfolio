@@ -13,13 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Alex Morgan | Full Stack Developer",
+  title: "Sameer Gautam | Full Stack Developer",
   description:
-    "Portfolio of Alex Morgan, a Full Stack Developer building scalable web applications, REST APIs, and modern user interfaces.",
+    "Portfolio of Sameer Gautam, a Full Stack Developer building scalable web applications, REST APIs, and modern user interfaces.",
   openGraph: {
-    title: "Alex Morgan | Full Stack Developer",
+    title: "Sameer Gautam | Full Stack Developer",
     description:
-      "Portfolio of Alex Morgan, a Full Stack Developer building scalable web applications, REST APIs, and modern user interfaces.",
+      "Portfolio of Sameer Gautam, a Full Stack Developer building scalable web applications, REST APIs, and modern user interfaces.",
     type: "website",
   },
 };
