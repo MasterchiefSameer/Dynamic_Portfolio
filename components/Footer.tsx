@@ -79,6 +79,13 @@ export default function Footer() {
             <p className="text-sm text-zinc-600">
               © {year} {personalInfo.name.first} {personalInfo.name.last}. All rights reserved.
             </p>
+            <p className="text-sm text-zinc-600 font-mono">
+              Built with{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-semibold">
+                Antigravity
+              </span>{" "}
+              ✦
+            </p>
             <a
               href="#"
               className="group flex items-center gap-2 text-sm text-zinc-600 hover:text-white transition-colors"

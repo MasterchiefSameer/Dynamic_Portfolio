@@ -6,15 +6,17 @@
 export const personalInfo = {
   name: { first: "Sameer", last: "Gautam" },
   initials: "SG",
-  roles: ["Full Stack Developer", "UI/UX Enthusiast", "Open Source Contributor"],
+  roles: ["Full Stack Developer", "UI/UX Enthusiast", "Open Source Contributor", "Code in C++"],
   email: "sameergautam024@gmail.com",
   github: "https://github.com/MasterchiefSameer",
   linkedin: "https://www.linkedin.com/in/sameergautam1996/",
+  codolio: "https://codolio.com/profile/SameerG",
   twitter: "",
   location: "Kanpur, Uttar Pradesh",
   availability: "Open to full-time opportunities & freelance projects",
   resumeUrl: "https://drive.google.com/file/d/1MPeEPMDIzs7M68LQYEEalYt9b-4UfyJF/view?usp=sharing",
 };
+
 
 export const experiences = [
   {
@@ -290,6 +292,8 @@ export const education = [
       "Data Structures and Algorithms",
       "Object Oriented Programming",
       "Operating Systems",
+      "Design and Analysis of Algorithms",
+      "Compiler Design",
       "DBMS",
       "Python Programming Language",
       "Computer Networks",

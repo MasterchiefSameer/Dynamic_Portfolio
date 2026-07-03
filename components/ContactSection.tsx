@@ -42,9 +42,27 @@ export default function ContactSection() {
     e.preventDefault();
     if (!validate()) return;
     setStatus("sending");
-    // Simulate sending (replace with real service like Formspree/EmailJS)
-    await new Promise((r) => setTimeout(r, 1500));
-    setStatus("success");
+
+    try {
+      const res = await fetch("https://formspree.io/f/xkolpgqo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          subject: form.subject || "(No subject)",
+          message: form.message,
+        }),
+      });
+
+      if (res.ok) {
+        setStatus("success");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   const handleChange = (
@@ -183,6 +201,25 @@ export default function ContactSection() {
                   onClick={() => { setStatus("idle"); setForm({ name: "", email: "", subject: "", message: "" }); }}
                 >
                   Send another message
+                </button>
+              </div>
+            ) : status === "error" ? (
+              <div className="flex flex-col items-center justify-center h-full gap-4 text-center py-16">
+                <div className="w-16 h-16 rounded-full bg-red-500/15 border border-red-500/30 flex items-center justify-center text-red-400 text-2xl">
+                  ✕
+                </div>
+                <h3 className="text-xl font-bold text-white">Something went wrong</h3>
+                <p className="text-zinc-400 text-sm max-w-xs">
+                  Message could not be delivered. Please try emailing me directly at{" "}
+                  <a href={`mailto:${personalInfo.email}`} className="text-blue-400 hover:underline">
+                    {personalInfo.email}
+                  </a>
+                </p>
+                <button
+                  className="text-sm text-zinc-500 hover:text-zinc-300 mt-2 underline"
+                  onClick={() => setStatus("idle")}
+                >
+                  Try again
                 </button>
               </div>
             ) : (

@@ -1,13 +1,34 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { ArrowRight, Mail } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Mail, FileText, X, QrCode } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/BrandIcons";
 import { personalInfo, tickerSkills } from "@/lib/data";
 
+// ── Codolio SVG icon (inline custom brand icon) ─────────────────────────────
+function CodolioIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
+      <line x1="12" y1="2" x2="12" y2="22" strokeOpacity="0.5" />
+    </svg>
+  );
+}
+
 export default function HeroSection() {
   const mouseRef = useRef<HTMLDivElement>(null);
+  const [qrOpen, setQrOpen] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -20,7 +41,15 @@ export default function HeroSection() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+  // Close QR on Escape key
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setQrOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   const duplicatedTicker = [...tickerSkills, ...tickerSkills];
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(personalInfo.linkedin)}&bgcolor=09090b&color=a78bfa&format=png&margin=12`;
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-black text-white">
@@ -94,17 +123,37 @@ export default function HeroSection() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <a
-            href="#projects"
-            className="group flex items-center gap-3 text-white hover:text-blue-400 transition-colors duration-500"
-          >
-            <span className="text-lg font-medium tracking-wide border-b border-transparent group-hover:border-blue-400 transition-all">
-              View Selected Works
-            </span>
-            <ArrowRight className="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-500" />
-          </a>
+          {/* CTA Buttons row */}
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+            {/* View Selected Works */}
+            <a
+              href="#projects"
+              className="group flex items-center gap-3 text-white hover:text-blue-400 transition-colors duration-500"
+            >
+              <span className="text-lg font-medium tracking-wide border-b border-transparent group-hover:border-blue-400 transition-all">
+                View Selected Works
+              </span>
+              <ArrowRight className="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-500" />
+            </a>
 
-          <div className="flex gap-8">
+            {/* Divider */}
+            <span className="hidden sm:block h-5 w-px bg-zinc-700" />
+
+            {/* View Resume */}
+            <a
+              href={personalInfo.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-2.5 px-5 py-2.5 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 text-zinc-300 hover:text-white transition-all duration-300 backdrop-blur-sm"
+            >
+              <FileText className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform duration-300" />
+              <span className="text-sm font-medium tracking-wide">View Resume</span>
+            </a>
+          </div>
+
+          {/* Social Icons row */}
+          <div className="flex items-center gap-7">
+            {/* GitHub */}
             <a
               href={personalInfo.github}
               target="_blank"
@@ -114,6 +163,8 @@ export default function HeroSection() {
             >
               <GithubIcon className="w-5 h-5" />
             </a>
+
+            {/* LinkedIn */}
             <a
               href={personalInfo.linkedin}
               target="_blank"
@@ -123,12 +174,36 @@ export default function HeroSection() {
             >
               <LinkedinIcon className="w-5 h-5" />
             </a>
+
+            {/* QR Code trigger — next to LinkedIn */}
+            <button
+              onClick={() => setQrOpen(true)}
+              className="text-zinc-500 hover:text-purple-400 transition-colors duration-300 hover:scale-110 transform focus:outline-none"
+              aria-label="LinkedIn QR Code"
+              title="Scan to open LinkedIn"
+            >
+              <QrCode className="w-5 h-5" />
+            </button>
+
+            {/* Email */}
             <a
               href={`mailto:${personalInfo.email}`}
               className="text-zinc-500 hover:text-white transition-colors duration-300 hover:scale-110 transform"
               aria-label="Email"
             >
               <Mail className="w-5 h-5" />
+            </a>
+
+            {/* Codolio */}
+            <a
+              href={personalInfo.codolio}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-zinc-500 hover:text-blue-400 transition-colors duration-300 hover:scale-110 transform"
+              aria-label="Codolio profile"
+              title="Codolio — Competitive Coding Profile"
+            >
+              <CodolioIcon className="w-5 h-5" />
             </a>
           </div>
         </motion.div>
@@ -162,6 +237,80 @@ export default function HeroSection() {
           </div>
         </div>
       </motion.div>
+
+      {/* ── LinkedIn QR Code Modal ───────────────────────────────────────── */}
+      <AnimatePresence>
+        {qrOpen && (
+          <motion.div
+            className="fixed inset-0 z-[100] flex items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            {/* Backdrop */}
+            <motion.div
+              className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+              onClick={() => setQrOpen(false)}
+            />
+
+            {/* Modal Card */}
+            <motion.div
+              className="relative z-10 bg-zinc-950 border border-white/10 rounded-2xl p-8 flex flex-col items-center gap-5 shadow-2xl"
+              initial={{ scale: 0.85, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.85, opacity: 0, y: 20 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setQrOpen(false)}
+                className="absolute top-3 right-3 text-zinc-500 hover:text-white transition-colors p-1 rounded-lg hover:bg-white/5"
+                aria-label="Close QR modal"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              {/* Header */}
+              <div className="flex items-center gap-2 text-purple-400">
+                <QrCode className="w-5 h-5" />
+                <span className="text-sm font-semibold tracking-wide uppercase">Scan for LinkedIn</span>
+              </div>
+
+              {/* QR Code image */}
+              <div className="rounded-xl overflow-hidden border border-purple-500/20 p-1 bg-zinc-900">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={qrUrl}
+                  alt="LinkedIn QR Code"
+                  width={220}
+                  height={220}
+                  className="rounded-lg"
+                />
+              </div>
+
+              {/* Footer */}
+              <div className="text-center space-y-1">
+                <p className="text-xs text-zinc-500 font-mono">
+                  Scan or{" "}
+                  <a
+                    href={personalInfo.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-purple-400 hover:text-purple-300 underline underline-offset-2"
+                  >
+                    click here
+                  </a>{" "}
+                  to open LinkedIn
+                </p>
+                <p className="text-xs text-zinc-600 font-mono truncate max-w-[220px]">
+                  {personalInfo.linkedin}
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
