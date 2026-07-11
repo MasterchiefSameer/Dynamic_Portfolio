@@ -7,12 +7,13 @@ import { personalInfo } from "@/lib/data";
 const navLinks = [
   { label: "Home", href: "#" },
   { label: "Experience", href: "#experience" },
+  { label: "Terminal", href: "#terminal" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
   { label: "Education", href: "#education" },
   { label: "Achievements", href: "#achievements" },
+  { label: "Volunteering", href: "#volunteering" },
   { label: "Beyond Code", href: "#beyond-code" },
-  { label: "Terminal", href: "#terminal" },
   { label: "Contact", href: "#contact" },
 ];
 

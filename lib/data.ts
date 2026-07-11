@@ -381,4 +381,41 @@ export const hobbies = [
   }
 ];
 
-
+export const volunteering = [
+  {
+    id: 1,
+    role: "Student Coordinator",
+    organization: "Training and Placement Cell, CSJMU Kanpur",
+    period: "Oct 2025",
+    description:
+      "Played a key role in organizing the Campus Job Fair 2025. Managed on-ground logistics, coordinated with recruiters, and streamlined the interview process for hundreds of students.",
+    color: "#3B82F6",
+  },
+  {
+    id: 2,
+    role: "Organizer Team Member",
+    organization: "Training and Placement Cell, CSJMU Kanpur",
+    period: "Aug 2025",
+    description:
+      'Played a key role as a member of the organizing committee for the "Digital Identity Awareness Workshop". Assisted in coordinating sessions, managing logistics, promotional outreach and ensuring a smooth experience for all participants.',
+    color: "#8B5CF6",
+  },
+  {
+    id: 3,
+    role: "Student Volunteer on ICRAECCT-2025",
+    organization: "International Cell, CSJMU",
+    period: "April 2025",
+    description:
+      "Served as a core volunteer for the International Conference on Recent Advances in Engineering, Computing, and Communication Technologies.",
+    color: "#06B6D4",
+  },
+  {
+    id: 4,
+    role: "Organizer Team Member",
+    organization: "GDG Kanpur & Tech Events",
+    period: "May 2023 – June 2023",
+    description:
+      "Active organizer for Google Developer Groups (GDG) and various college tech fests. Facilitating workshops and fostering a collaborative developer community.",
+    color: "#10B981",
+  },
+];
