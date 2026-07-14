@@ -63,7 +63,7 @@ export default function VolunteeringSection() {
                   style={{
                     backgroundColor: item.color,
                     boxShadow: `0 0 10px ${item.color}55`,
-                    ringColor: item.color,
+                    ["--tw-ring-color" as string]: item.color,
                   }}
                 />
 
