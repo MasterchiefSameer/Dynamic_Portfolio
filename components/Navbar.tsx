@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { personalInfo } from "@/lib/data";
+import TrafficInsights from "@/components/TrafficInsights";
 
 const navLinks = [
   { label: "Home", href: "#" },
@@ -60,28 +61,34 @@ export default function Navbar() {
           </a>
 
           {/* Desktop Nav */}
-          <ul className="hidden md:flex gap-8">
-            {navLinks.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  className="text-sm font-medium text-zinc-400 hover:text-white transition-colors relative group"
-                >
-                  {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full" />
-                </a>
-              </li>
-            ))}
-          </ul>
+          <div className="hidden md:flex items-center gap-8">
+            <ul className="flex gap-8">
+              {navLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-sm font-medium text-zinc-400 hover:text-white transition-colors relative group"
+                  >
+                    {link.label}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <TrafficInsights />
+          </div>
 
-          {/* Mobile Hamburger */}
-          <button
-            className="md:hidden text-white p-2"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          {/* Mobile Hamburger & Views */}
+          <div className="md:hidden flex items-center gap-4">
+            <TrafficInsights />
+            <button
+              className="text-white p-2"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
       </nav>
 
