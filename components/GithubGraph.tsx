@@ -40,7 +40,7 @@ export default function GithubGraph() {
     async function fetchContributions() {
       try {
         const res = await fetch(
-          `https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}?y=last`,
+          `https://github-contributions-api.jogruber.de/v4/${personalInfo.github_username}?y=last`,
           { next: { revalidate: 3600 } } as RequestInit
         );
         if (!res.ok) throw new Error("API error");
@@ -129,22 +129,22 @@ export default function GithubGraph() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="p-6 md:p-8 rounded-2xl border border-white/5 bg-zinc-950/60 backdrop-blur-md overflow-x-auto shadow-2xl"
+          className="p-6 md:p-8 rounded-2xl border border-white/5 bg-zinc-950/60 backdrop-blur-md overflow-x-auto shadow-2xl flex justify-center"
         >
           {loading ? (
             /* Skeleton loader */
-            <div className="min-w-[640px] space-y-2 animate-pulse py-4">
-              <div className="flex gap-1 mb-3">
+            <div className="min-w-max space-y-2 animate-pulse py-4 flex flex-col items-center">
+              <div className="flex gap-1 mb-3 w-full justify-between">
                 {Array.from({ length: 12 }).map((_, i) => (
-                  <div key={i} className="h-3 bg-zinc-800 rounded flex-1" />
+                  <div key={i} className="h-3 bg-zinc-800 rounded flex-1 max-w-[50px]" />
                 ))}
               </div>
               {Array.from({ length: 7 }).map((_, row) => (
-                <div key={row} className="flex gap-1">
+                <div key={row} className="flex gap-1.5">
                   {Array.from({ length: 53 }).map((_, col) => (
                     <div
                       key={col}
-                      className="w-[13px] h-[13px] rounded-sm bg-zinc-800/60"
+                      className="w-[15px] h-[15px] rounded-sm bg-zinc-800/60"
                     />
                   ))}
                 </div>
@@ -163,7 +163,7 @@ export default function GithubGraph() {
               </a>
             </div>
           ) : (
-            <div className="min-w-[640px]">
+            <div className="min-w-max flex justify-center overflow-x-auto py-2">
               <ContributionCalendar
                 data={calendarData}
                 dateOptions={{
@@ -173,10 +173,10 @@ export default function GithubGraph() {
                 }}
                 styleOptions={{
                   theme: portfolioTheme,
-                  textColor: "#52525b",
-                  cx: 13,
-                  cy: 13,
-                  cr: 3,
+                  textColor: "#71717a",
+                  cx: 15.5,
+                  cy: 15.5,
+                  cr: 3.5,
                 }}
               />
             </div>

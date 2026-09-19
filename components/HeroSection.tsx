@@ -211,7 +211,7 @@ export default function HeroSection() {
 
       {/* Tech Ticker */}
       <motion.div
-        className="absolute bottom-0 w-full py-6 border-t border-white/5 bg-gradient-to-t from-black to-transparent backdrop-blur-[2px]"
+        className="absolute bottom-0 w-full py-3 border-t border-white/5 bg-gradient-to-t from-black to-transparent backdrop-blur-[2px]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 1.1 }}

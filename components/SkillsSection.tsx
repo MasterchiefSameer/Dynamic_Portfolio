@@ -8,6 +8,7 @@ import {
   Cloud,
   Wrench,
   BrainCircuit,
+  Code,
 } from "lucide-react";
 import { skillCategories } from "@/lib/data";
 
@@ -18,6 +19,7 @@ const iconMap: Record<string, React.ReactNode> = {
   Cloud: <Cloud className="w-6 h-6" />,
   Wrench: <Wrench className="w-6 h-6" />,
   BrainCircuit: <BrainCircuit className="w-6 h-6" />,
+  Code: <Code className="w-6 h-6" />,
 };
 
 export default function SkillsSection() {

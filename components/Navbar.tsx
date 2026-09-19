@@ -14,7 +14,7 @@ const navLinks = [
   { label: "Education", href: "#education" },
   { label: "Achievements", href: "#achievements" },
   { label: "Volunteering", href: "#volunteering" },
-  { label: "Beyond Code", href: "#beyond-code" },
+  // { label: "Beyond Code", href: "#beyond-code" },
   { label: "Contact", href: "#contact" },
 ];
 
