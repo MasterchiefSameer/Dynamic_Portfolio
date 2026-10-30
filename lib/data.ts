@@ -25,7 +25,7 @@ export const experiences = [
     company: "Anethix Labs Pvt Ltd.",
     location: "Guwahati, Assam",
     image:
-    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop",
     accentColor: "#0F766E",
     dateRange: "July 2026 – September 2026",
     title: "Software Developer Engineer Intern",
@@ -96,72 +96,142 @@ export const experiences = [
 
 export const projects = [
   {
-  id: 1, // Adjust this ID based on its position in your projects array
-  number: "01", // Adjust this number sequence based on your list
-  name: "Foodie Diet — AI-Powered Meal & Recipe Planner",
-  description:
-    "A full-stack pantry manager and meal planner that leverages Google Gemini AI to analyze available ingredients and generate custom, image-mapped recipes.",
-  accentColor: "#10B981", // Sleek food-themed green color
-  codeSnippet: {
-    importName: "{ getOrGenerateRecipe }",
-    moduleName: "@/actions/recipe.actions",
-    comment: "AI recipe query and database cache layer",
-    className: "RecipeService",
+    "id": 1,
+    "number": "01",
+    "name": "HB+ — Cross-Platform Telehealth",
+    "description": "A cross-platform healthcare and employee portal built with Expo and React Native, featuring secure member onboarding, institutional staff access, and a polished universal web/mobile experience.",
+    "accentColor": "#9F4022",
+    "codeSnippet": {
+      "importName": "{ useAuth }",
+      "moduleName": "@/context/auth-context",
+      "comment": "Auth state, route guards, and portal-specific session logic",
+      "className": "AuthProvider"
+    },
+    "techTags": [
+      "TypeScript", "JavaScript", "React Native (0.88+)", "Expo SDK 58", "Expo Router", "Tailwind CSS/NativeWind v5", "Clerk Auth", "PWA (Progressive Web Apps), Service Workers",
+      ],
+    "bullets": [
+      "Core infrastructure includes Clerk for identity, Supabase for backend/data integration, and secure token storage for native/mobile sessions.",
+      "Architected a health & clinical portal using React Native, Expo 58, and TypeScript, delivering a single-codebase experience across Android, iOS, and Web.",
+      "Engineered a dual-gateway auth system with Clerk & Google OAuth (SSO) featuring automated @hbplus.fit domain verification, PKCE code exchange, and hardware-encrypted expo-secure-store session management.",
+      "Designed an installable PWA with Service Worker caching, slashing application bundle size from a standard 60 MB native binary down to 3.2 MB with sub-second launch times."
+    ],
+    "githubUrl": "https://github.com/MasterchiefSameer/HbPlus",
+    "liveUrl": "https://hbplusandroid.vercel.app"
   },
-  techTags: ["Next.js", "Strapi CMS (API Architecture)", "Lucide-React", "Tailwind CSS", "ShadCN UI", "Clerk (Auth)",  "Google Gemini AI", "PostgreSQL", "Arcjet",  "Sonner", ],
-  bullets: [
-    "Integrated Google Gemini AI to generate step-by-step recipes based on pantry ingredients, enriched with dynamic Unsplash image mapping.",
-    "Secured Edge API routes and Server Actions using Arcjet middleware, enforcing subscription limits and preventing malicious request spam.",
-    "Engineered a database caching strategy in Neon DB using Strapi v5, yielding a 40% reduction in page load times by reusing common recipe queries.",
-  ],
-  githubUrl: "https://github.com/MasterchiefSameer/Servd",
-  liveUrl: "https://servd-woad.vercel.app/", 
-},
-
   {
-  id: 2,
-  number: "02",
-  name: "Vocab Challenge — Wordle Clone",
-  description:
-    "A polished, accessible Wordle-style word game built entirely with vibe coding. Features daily and unlimited modes, hard mode, stats tracking, sound effects, and a responsive keyboard-driven UI.",
-  accentColor: "#3B82F6",
-  codeSnippet: {
-    importName: "{ useGameStore }",
-    moduleName: "@/store/gameStore",
-    comment: "Core game state & guess evaluation",
-    className: "GameStore",
+    "id": 2,
+    "number": "02",
+    "name": "Hospital Clinical Management System",
+    "description": "A full-stack hospital operations platform for patient booking, doctor discovery, staff management, and admin workflows. Built with role-based access control, secure authentication, and a modern dashboard for clinical operations.",
+    "accentColor": "#14B8A6",
+    "codeSnippet": {
+      "importName": "{ ProtectedRoute }",
+      "moduleName": "@/components/ProtectedRoute",
+      "comment": "Role-based route protection for patient and staff access",
+      "className": "ProtectedRoute"
+    },
+    "techTags": [
+      "React 19", "Vite 8", "Tailwind CSS", "Node.js", "Express 5", "MongoDB", "JWT", "Socket.IO", "React Router"
+    ],
+    "bullets": [
+      "Engineered a MERN-based enterprise application, efficiently managing 100+ patient and staff records.",
+      "Architected a 4-tier RBAC system, securing 100% of sensitive routes via HTTP-only JWT cookies.",
+      "Designed 4 complex MongoDB collections and developed 20+ secure RESTful APIs.",
+      "Integrated Socket.io for live appointment booking, reduce 100% of manual queue refreshes and saving staff time.",
+    ],
+    "githubUrl": "https://github.com/MasterchiefSameer/Anethix_Intern_Hospital_Clinical_Management_2",
+    "liveUrl": "https://anethix-intern-hospital-clinical-ma.vercel.app/",
   },
-  techTags: ["TanStack Start", "React 19", "Vite 7", "TypeScript", "Tailwind CSS v4", "Vitest", "Zustand"],
-  bullets: [
-    "Built a complete 5-letter word guessing game with daily and unlimited modes using vibe-coding workflows.",
-    "Implemented official two-pass letter evaluation, hard mode validation, and persistent game state via localStorage.",
-    "Deployed to both Lovable and Vercel with platform-specific Nitro build configuration from a single codebase.",
-  ],
-  githubUrl: "https://github.com/MasterchiefSameer/vocab-challenge-hub",
-  liveUrl: "https://vocab-challenge-hub.vercel.app/",
-},
-{
+  {
     id: 3,
     number: "03",
-    name: "AskAI — AI Chat Application",
+    name: "Vocab Challenge — Wordle Clone",
     description:
-      "A streaming AI chat application powered by GPT-4, with conversation history, prompt templates, and multi-model support.",
-    accentColor: "#F59E0B",
+      "A polished, accessible Wordle-style word game built entirely with vibe coding. Features daily and unlimited modes, hard mode, stats tracking, sound effects, and a responsive keyboard-driven UI.",
+    accentColor: "#3B82F6",
     codeSnippet: {
-      importName: "{ AskAI }",
-      moduleName: "@/ai",
-      comment: "Streaming AI response handler",
-      className: "ChatService",
+      importName: "{ useGameStore }",
+      moduleName: "@/store/gameStore",
+      comment: "Core game state & guess evaluation",
+      className: "GameStore",
     },
-    techTags: ["Next.js", "OpenAI API", "Vercel AI SDK", "Supabase", "TypeScript"],
+    techTags: ["TanStack Start", "React 19", "Vite 7", "TypeScript", "Tailwind CSS v4", "Vitest", "Zustand"],
     bullets: [
-      "Implemented streaming responses using Vercel AI SDK for real-time text output.",
-      "Built conversation history with vector embeddings for context-aware replies.",
-      "Supported 5 AI models with hot-swap capability and token usage tracking.",
+      "Built a complete 5-letter word guessing game with daily and unlimited modes using vibe-coding workflows.",
+      "Implemented official two-pass letter evaluation, hard mode validation, and persistent game state via localStorage.",
+      "Deployed to both Lovable and Vercel with platform-specific Nitro build configuration from a single codebase.",
     ],
-    githubUrl: "https://github.com/alexmorgan/askai",
-    liveUrl: "https://askai.demo.com",
+    githubUrl: "https://github.com/MasterchiefSameer/vocab-challenge-hub",
+    liveUrl: "https://vocab-challenge-hub.vercel.app/",
   },
+  {
+    id: 4, // Adjust this ID based on its position in your projects array
+    number: "04", // Adjust this number sequence based on your list
+    name: "Foodie Diet — AI-Powered Meal & Recipe Planner",
+    description:
+      "A full-stack pantry manager and meal planner that leverages Google Gemini AI to analyze available ingredients and generate custom, image-mapped recipes.",
+    accentColor: "#10B981", // Sleek food-themed green color
+    codeSnippet: {
+      importName: "{ getOrGenerateRecipe }",
+      moduleName: "@/actions/recipe.actions",
+      comment: "AI recipe query and database cache layer",
+      className: "RecipeService",
+    },
+    techTags: ["Next.js", "Strapi CMS (API Architecture)", "Lucide-React", "Tailwind CSS", "ShadCN UI", "Clerk (Auth)", "Google Gemini AI", "PostgreSQL", "Arcjet", "Sonner",],
+    bullets: [
+      "Integrated Google Gemini AI to generate step-by-step recipes based on pantry ingredients, enriched with dynamic Unsplash image mapping.",
+      "Secured Edge API routes and Server Actions using Arcjet middleware, enforcing subscription limits and preventing malicious request spam.",
+      "Engineered a database caching strategy in Neon DB using Strapi v5, yielding a 40% reduction in page load times by reusing common recipe queries.",
+    ],
+    githubUrl: "https://github.com/MasterchiefSameer/Servd",
+    liveUrl: "https://servd-woad.vercel.app/",
+  },
+  {
+    "id": 5,
+    "number": "05",
+    "name": "CPI Charm",
+    "description": "A JavaScript-first web project with a frontend-heavy codebase, combining interactive UI logic, styling, and light TypeScript integration.",
+    "accentColor": "#10B981",
+    "codeSnippet": {
+      "importName": "{ useCharmStore }",
+      "moduleName": "@/store/charmStore",
+      "comment": "Core app state & UI orchestration",
+      "className": "CharmStore"
+    },
+    "techTags": ["JavaScript", "CSS", "TypeScript", "HTML", "React", "Vite", "Tailwind", "jspdf"],
+    "bullets": [
+      "Built as a Vite + React single-page app, with the majority of behavior and UI logic implemented in JavaScript.",
+      "The project is front-end driven: semester tracking, charting, local state, and report generation all run in the browser.",
+      "CSS is a core part of the experience, while a smaller TypeScript footprint supports tooling and configuration across the app.",
+      "Important libraries include React Router, Recharts for data visualization, html2canvas and jspdf for image/PDF export, and Tailwind for styling.",
+      "This is a polished, interactive academic dashboard rather than a backend-heavy system, with user-facing calculations and export workflows taking center stage."
+    ],
+    "githubUrl": "https://github.com/MasterchiefSameer/cpi-charm",
+    "liveUrl": "https://cpi-charm.vercel.app/"
+  }
+  // {
+  //     id: 3,
+  //     number: "03",
+  //     name: "Hospital",
+  //     description:
+  //       "A streaming AI chat application powered by GPT-4, with conversation history, prompt templates, and multi-model support.",
+  //     accentColor: "#F59E0B",
+  //     codeSnippet: {
+  //       importName: "{ AskAI }",
+  //       moduleName: "@/ai",
+  //       comment: "Streaming AI response handler",
+  //       className: "ChatService",
+  //     },
+  //     techTags: ["Next.js", "OpenAI API", "Vercel AI SDK", "Supabase", "TypeScript"],
+  //     bullets: [
+  //       "Implemented streaming responses using Vercel AI SDK for real-time text output.",
+  //       "Built conversation history with vector embeddings for context-aware replies.",
+  //       "Supported 5 AI models with hot-swap capability and token usage tracking.",
+  //     ],
+  //     githubUrl: "https://github.com/alexmorgan/askai",
+  //     liveUrl: "https://askai.demo.com",
+  //   },
 ];
 
 export const skillCategories = [
@@ -175,13 +245,13 @@ export const skillCategories = [
     category: "Frontend ",
     icon: "Code",
     color: "#3B82F6",
-    items: ["HTML5", "CSS3", "JavaScript (ES6+)", "React.js", "Tailwind CSS", "Next.js", "ShadCN UI", "TanStack Start"],
+    items: ["HTML5", "CSS3", "JavaScript (ES6+)", "React.js", "Tailwind / NativeWind CSS", "Next.js", "ShadCN UI", "TanStack Start", "React Native"],
   },
   {
     category: "Backend",
     icon: "Layers",
     color: "#10B981",
-    items: [ "Node.js", "Express.js", "WebSockets", "JWT","OAuth 2.0","GraphQL","Scalable Systems", "Performance Optimization", ],
+    items: ["Node.js", "Express.js", "WebSockets", "JWT", "OAuth 2.0", "GraphQL", "Scalable Systems", "Expo SDK", "Performance Optimization"],
   },
   {
     category: "Databases & Caching",
@@ -193,7 +263,7 @@ export const skillCategories = [
     category: "Cloud & DevOps",
     icon: "Cloud",
     color: "#8B5CF6",
-    items: ["AWS", "kubernetes", "Vercel", "Docker", "Render", "CI/CD pipelines" ],
+    items: ["AWS", "Kubernetes", "Docker", "CI/CD pipelines", "Vercel", "Render", "Netlify"],
   },
   {
     category: "Tools & Platforms",
@@ -206,7 +276,7 @@ export const skillCategories = [
     icon: "BrainCircuit",
     color: "#06B6D4",
     // items: ["REST APIs", "GraphQL", "System Design", "Microservices", "WebSockets", "JWT Auth"],
-    items: ["REST APIs", "WebSockets", "JWT Auth", "Data Structures & Algorithms", "Networking", "Operating Systems", "Object-Oriented Programming", "Database Management Systems", "Scalable Systems", "Performance Optimization"],
+    items: ["REST APIs", "WebSockets", "JWT Auth", "Data Structures & Algorithms", "Networking", "Operating Systems", "Object-Oriented Programming", "Database Management Systems", "Scalable Systems", "Performance Optimization", "Progressive Web Apps"],
   },
 ];
 
